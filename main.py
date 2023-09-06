@@ -1,5 +1,8 @@
 # main.py
 #working
+import sys
+import time
+
 import pygame
 from tkinter import messagebox
 from constants import *
@@ -39,7 +42,12 @@ def draw_start_end():
     pygame.display.flip()
 
 def show_alert(message):
-    messagebox.showinfo("Success", message)
+    result = messagebox.askquestion("Rerun Program", "Do you want to rerun the program?")
+    if result == "yes":
+        main()
+    else:
+        messagebox.showinfo("Bye", "Exit app")
+        sys.exit()
 
 def main():
     maze = Maze().maze
